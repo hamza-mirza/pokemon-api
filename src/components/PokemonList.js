@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
 import PokemonCard from './PokemonCard'
-import { usePokemonContext } from '@/context/AppContext'
+import { useAppContext } from '@/context/AppContext'
 
 const PokemonList = () => {
   const {
     state: { pokemon, loading, searchTerm, debouncedTerm },
     dispatch
-  } = usePokemonContext()
+  } = useAppContext()
 
   useEffect(() => {
     const fetchPokemon = async () => {

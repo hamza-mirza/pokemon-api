@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { usePokemonContext } from '@/context/AppContext'
+import { useAppContext } from '@/context/AppContext'
 import Wrapper from '@/components/Wrapper'
 
 const Pokemon = () => {
@@ -9,7 +9,7 @@ const Pokemon = () => {
   const {
     state: { loading, pokemonDetails },
     dispatch
-  } = usePokemonContext()
+  } = useAppContext()
 
   useEffect(() => {
     if (!id) return

@@ -1,6 +1,6 @@
 import { createContext, useReducer, useContext } from 'react'
 
-const PokemonContext = createContext()
+const AppContext = createContext()
 
 const initialState = {
   pokemon: [],
@@ -36,9 +36,9 @@ const pokemonReducer = (state, action) => {
 export const PokemonProvider = ({ children }) => {
   const [state, dispatch] = useReducer(pokemonReducer, initialState)
 
-  return <PokemonContext.Provider value={{ state, dispatch }}>{children}</PokemonContext.Provider>
+  return <AppContext.Provider value={{ state, dispatch }}>{children}</AppContext.Provider>
 }
 
-export const usePokemonContext = () => {
-  return useContext(PokemonContext)
+export const useAppContext = () => {
+  return useContext(AppContext)
 }
