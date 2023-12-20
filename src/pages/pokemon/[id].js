@@ -1,30 +1,35 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useRouter } from 'next/router'
-
+import { usePokemonContext } from '@/context/AppContext'
 import Wrapper from '@/components/Wrapper'
 
 const Pokemon = () => {
   const router = useRouter()
   const { id } = router.query
-  const [pokemonDetails, setPokemonDetails] = useState(null)
-  const [loading, setLoading] = useState(true)
+  const {
+    state: { loading, pokemonDetails },
+    dispatch
+  } = usePokemonContext()
 
   useEffect(() => {
     if (!id) return
     const fetchPokemonDetails = async () => {
+      dispatch({ type: 'SET_LOADING', payload: true })
       try {
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
         const data = await response.json()
-        setPokemonDetails(data)
+        dispatch({ type: 'SET_POKEMON_DETAILS', payload: data })
       } catch (error) {
         console.error('Error fetching pokemon details: ', error)
       } finally {
-        setLoading(false)
+        dispatch({ type: 'SET_LOADING', payload: false })
       }
     }
 
     fetchPokemonDetails()
-  }, [id])
+  }, [id, dispatch])
+
+  const details = pokemonDetails[id]
 
   if (loading)
     return (
@@ -33,23 +38,24 @@ const Pokemon = () => {
       </Wrapper>
     )
 
-  if (!pokemonDetails) return <Wrapper>No data found.</Wrapper>
-  console.log(pokemonDetails)
-  const imageUrl = pokemonDetails.sprites.other['official-artwork'].front_default
+  if (!details) return <Wrapper>No data found.</Wrapper>
+
+  const imageUrl = details.sprites.other['official-artwork'].front_default
+
   return (
     <Wrapper>
-      <h1>{pokemonDetails.name}</h1>
+      <h1>{details.name}</h1>
       <div>
         <img
           src={imageUrl}
-          alt={pokemonDetails.name}
+          alt={details.name}
         />
       </div>
       <div>
         <div>
           <h2>Abilities</h2>
           <ul>
-            {pokemonDetails.abilities.map(abilityInfo => (
+            {details.abilities.map(abilityInfo => (
               <li key={abilityInfo.ability.name}>{abilityInfo.ability.name}</li>
             ))}
           </ul>
@@ -57,7 +63,7 @@ const Pokemon = () => {
         <div>
           <h2>Stats</h2>
           <ul>
-            {pokemonDetails.stats.map(statInfo => (
+            {details.stats.map(statInfo => (
               <li key={statInfo.stat.name}>
                 {statInfo.stat.name}: {statInfo.base_stat}
               </li>

@@ -1,41 +1,43 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import PokemonCard from './PokemonCard'
+import { usePokemonContext } from '@/context/AppContext'
 
 const PokemonList = () => {
-  const [pokemon, setPokemon] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [searchTerm, setSearchTerm] = useState('')
-  const [debouncedTerm, setDebouncedTerm] = useState('')
+  const {
+    state: { pokemon, loading, searchTerm, debouncedTerm },
+    dispatch
+  } = usePokemonContext()
 
   useEffect(() => {
     const fetchPokemon = async () => {
+      dispatch({ type: 'SET_LOADING', payload: true })
       try {
         const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=20')
         const data = await response.json()
-        setPokemon(data.results)
+        dispatch({ type: 'SET_POKEMON', payload: data.results })
       } catch (error) {
         console.error('Error fetching data: ', error)
       } finally {
-        setLoading(false)
+        dispatch({ type: 'SET_LOADING', payload: false })
       }
     }
 
     fetchPokemon()
-  }, [])
+  }, [dispatch])
 
   useEffect(() => {
     const handler = setTimeout(() => {
-      setDebouncedTerm(searchTerm)
+      dispatch({ type: 'SET_DEBOUNCED_TERM', payload: searchTerm })
     }, 300)
 
     return () => {
       clearTimeout(handler)
     }
-  }, [searchTerm])
+  }, [searchTerm, dispatch])
 
   const handleClearSearch = () => {
-    setSearchTerm('')
-    setDebouncedTerm('')
+    dispatch({ type: 'SET_SEARCH_TERM', payload: '' })
+    dispatch({ type: 'SET_DEBOUNCED_TERM', payload: '' })
   }
 
   const filteredPokemon = pokemon.filter(poke => poke.name.toLowerCase().includes(debouncedTerm.toLowerCase()))
@@ -47,7 +49,7 @@ const PokemonList = () => {
           type="search"
           placeholder="Search Pokémon"
           value={searchTerm}
-          onChange={e => setSearchTerm(e.target.value)}
+          onChange={e => dispatch({ type: 'SET_SEARCH_TERM', payload: e.target.value })}
         />
         <button onClick={handleClearSearch}>Clear</button>
       </div>
