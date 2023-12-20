@@ -1,9 +1,8 @@
 import React from 'react'
 import Link from 'next/link'
 
-const PokemonCard = ({ name, url }) => {
+const PokemonCard = React.memo(({ name, url }) => {
   const id = url.split('/').filter(Boolean).pop()
-
   const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`
 
   return (
@@ -19,6 +18,6 @@ const PokemonCard = ({ name, url }) => {
       <span className="poke-card-title">{name}</span>
     </Link>
   )
-}
+})
 
 export default PokemonCard
