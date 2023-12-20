@@ -1,3 +1,3 @@
-const Wrapper = ({ children }) => <div className="container mx-auto px-4">{children}</div>
+const Wrapper = ({ children }) => <div className="wrapper">{children}</div>
 
 export default Wrapper

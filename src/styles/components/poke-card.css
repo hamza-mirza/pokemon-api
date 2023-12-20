@@ -1,0 +1,11 @@
+.poke-card {
+  @apply bg-purple-1 text-center p-10 rounded-md;
+}
+
+.poke-card-image {
+  @apply w-56 h-56 mx-auto mb-10;
+}
+
+.poke-card-title {
+  @apply pt-10 block w-full border-t-2 border-purple-2 text-3xl capitalize;
+}

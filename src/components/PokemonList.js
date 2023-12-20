@@ -43,20 +43,25 @@ const PokemonList = () => {
   const filteredPokemon = pokemon.filter(poke => poke.name.toLowerCase().includes(debouncedTerm.toLowerCase()))
 
   return (
-    <div>
-      <div>
+    <div className="poke-list">
+      <div className="poke-list-search">
         <input
-          type="search"
+          className="poke-list-search-input"
           placeholder="Search Pokémon"
           value={searchTerm}
           onChange={e => dispatch({ type: 'SET_SEARCH_TERM', payload: e.target.value })}
         />
-        <button onClick={handleClearSearch}>Clear</button>
+        <button
+          className="poke-list-search-clear"
+          onClick={handleClearSearch}
+        >
+          &times;
+        </button>
       </div>
       {loading ? (
         <div>Loading...</div>
       ) : (
-        <div>
+        <div className="poke-list-cards">
           {filteredPokemon.map(poke => (
             <PokemonCard
               key={poke.name}

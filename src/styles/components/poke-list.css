@@ -1,0 +1,19 @@
+.poke-list {
+  @apply py-4 md:py-6;
+}
+
+.poke-list-cards {
+  @apply grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-3;
+}
+
+.poke-list-search {
+  @apply relative w-full mb-4 md:mb-6;
+}
+
+.poke-list-search-input {
+  @apply text-purple-2 font-semibold placeholder:font-normal block w-full p-4 rounded-md mb-4 md:mb-6;
+}
+
+.poke-list-search-clear {
+  @apply absolute top-2 right-4 text-2xl text-purple-2;
+}

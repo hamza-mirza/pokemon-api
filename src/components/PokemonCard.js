@@ -7,12 +7,16 @@ const PokemonCard = ({ name, url }) => {
   const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`
 
   return (
-    <Link href={`/pokemon/${id}`}>
+    <Link
+      className="poke-card"
+      href={`/pokemon/${id}`}
+    >
       <img
         src={imageUrl}
         alt={name}
+        className="poke-card-image"
       />
-      <span className="text-xl capitalize font-semibold">{name}</span>
+      <span className="poke-card-title">{name}</span>
     </Link>
   )
 }

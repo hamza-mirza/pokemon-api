@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import './base.css';
+@import './components/wrapper';
+@import './components/poke-list';
+@import './components/poke-card';
