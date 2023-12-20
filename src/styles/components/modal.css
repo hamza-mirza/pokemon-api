@@ -1,0 +1,7 @@
+.modal {
+  @apply absolute top-72 left-[50%] transform -translate-x-[50%] bg-purple-2 text-white w-[800px] h-[800px];
+}
+
+.modal-backdrop {
+  @apply absolute top-0 left-0 w-full h-full bg-black/45 overflow-hidden;
+}

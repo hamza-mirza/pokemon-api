@@ -6,3 +6,4 @@
 @import './components/wrapper';
 @import './components/poke-list';
 @import './components/poke-card';
+@import './components/modal';
