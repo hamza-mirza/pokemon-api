@@ -17,3 +17,11 @@
 .poke-list-search-clear {
   @apply absolute top-2 right-4 text-2xl;
 }
+
+.poke-list-cards-load-more {
+  @apply flex justify-center items-center py-12;
+}
+
+.poke-list-cards-load-more-btn {
+  @apply text-white bg-black px-12 py-3 rounded-full;
+}

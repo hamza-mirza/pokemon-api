@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 import { formatString } from '@/utils/helpers'
 
 const PokemonDetails = ({ selectedPokemon }) => {
@@ -12,10 +14,12 @@ const PokemonDetails = ({ selectedPokemon }) => {
   return (
     <div className="poke-detail">
       <div className="poke-detail-image-container">
-        <img
+        <Image
           className="poke-detail-image"
           src={imageUrl}
           alt={pok.name}
+          width={100}
+          height={100}
         />
       </div>
       <div className="poke-detail-content">

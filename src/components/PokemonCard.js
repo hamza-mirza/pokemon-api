@@ -1,4 +1,4 @@
-import React from 'react'
+import Image from 'next/image'
 
 const PokemonCard = ({ name, url, onClick }) => {
   const id = url.split('/').filter(Boolean).pop()
@@ -10,10 +10,12 @@ const PokemonCard = ({ name, url, onClick }) => {
       onClick={() => onClick(id)}
     >
       <div className="poke-card-image-container">
-        <img
+        <Image
           src={imageUrl}
           alt={name}
           className="poke-card-image"
+          width={100}
+          height={100}
         />
       </div>
       <span className="poke-card-title">{name}</span>

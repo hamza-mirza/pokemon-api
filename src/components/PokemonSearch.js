@@ -19,12 +19,14 @@ const PokemonSearch = () => {
         value={searchTerm}
         onChange={e => dispatch({ type: 'SET_SEARCH_TERM', payload: e.target.value })}
       />
-      <button
-        className="poke-list-search-clear"
-        onClick={handleClearSearch}
-      >
-        &times;
-      </button>
+      {searchTerm && (
+        <button
+          className="poke-list-search-clear"
+          onClick={handleClearSearch}
+        >
+          &times;
+        </button>
+      )}
     </div>
   )
 }
