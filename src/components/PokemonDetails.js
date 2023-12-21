@@ -3,6 +3,12 @@ import { formatString } from '@/utils/helpers'
 const PokemonDetails = ({ selectedPokemon }) => {
   const pok = selectedPokemon
   const imageUrl = pok.sprites.other['official-artwork'].front_default
+  const averageScore = Math.floor(
+    selectedPokemon.stats.reduce((sum, statInfo) => {
+      return sum + Math.min(statInfo.base_stat, 100)
+    }, 0) / selectedPokemon.stats.length
+  )
+
   return (
     <div className="poke-detail">
       <div className="poke-detail-image-container">
@@ -43,6 +49,7 @@ const PokemonDetails = ({ selectedPokemon }) => {
               </li>
             ))}
           </ul>
+          <p>Overall skill level: {averageScore}%</p>
         </div>
       </div>
     </div>
