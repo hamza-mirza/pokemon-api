@@ -48,6 +48,7 @@ const PokemonCards = ({ setSelectedPokemon }) => {
           </button>
         </div>
       )}
+      {!filteredPokemon.length && <p>No pokemons found.</p>}
     </>
   )
 }
