@@ -20,14 +20,6 @@ const pokemonReducer = (state, action) => {
       return { ...state, searchTerm: action.payload }
     case 'SET_DEBOUNCED_TERM':
       return { ...state, debouncedTerm: action.payload }
-    case 'SET_POKEMON_DETAILS':
-      return {
-        ...state,
-        pokemonDetails: {
-          ...state.pokemonDetails,
-          [action.payload.id]: action.payload
-        }
-      }
     default:
       return state
   }

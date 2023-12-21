@@ -3,7 +3,6 @@ import { formatString } from '@/utils/utils'
 const PokemonDetails = ({ selectedPokemon }) => {
   const pok = selectedPokemon
   const imageUrl = pok.sprites.other['official-artwork'].front_default
-  console.log(pok)
   return (
     <div className="poke-detail">
       <div className="poke-detail-image-container">

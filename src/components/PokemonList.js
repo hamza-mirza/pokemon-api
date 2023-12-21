@@ -56,7 +56,6 @@ const PokemonList = () => {
   }
 
   const filteredPokemon = pokemon.filter(poke => poke.name.toLowerCase().includes(debouncedTerm.toLowerCase()))
-  console.log(selectedPokemon)
   return (
     <div className="poke-list">
       <Wrapper>
