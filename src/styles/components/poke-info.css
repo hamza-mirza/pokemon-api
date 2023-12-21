@@ -1,0 +1,46 @@
+.poke-info-button {
+  @apply mt-10;
+}
+
+.poke-info-image-container {
+  @apply bg-grey-0 mb-10;
+}
+
+.poke-info-image {
+  @apply w-52 h-52 lg:w-80 lg:h-80 mx-auto;
+}
+
+.poke-info-card-container {
+  perspective: 1000px;
+  @apply w-[300px] h-[300px] mb-10;
+}
+
+.poke-info-card {
+  @apply relative w-full h-full transition-transform duration-1000;
+  transform-style: preserve-3d;
+  animation: flip 6s infinite linear;
+}
+
+.poke-info-card-front,
+.poke-info-card-back {
+  @apply absolute w-full h-full;
+  backface-visibility: hidden;
+}
+
+.poke-info-card-front {
+  @apply flex justify-center items-center;
+}
+
+.poke-info-card-back {
+  @apply flex justify-center items-center;
+  transform: rotateY(180deg);
+}
+
+@keyframes flip {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}

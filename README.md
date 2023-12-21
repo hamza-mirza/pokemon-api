@@ -46,6 +46,11 @@ To set up the PokeQuest app on your local machine, follow these steps:
 - Provides a search input for filtering Pokmon in the list.
 - Integrated with global state for search term management.
 
+### pokemon/[id.js] (PokemonInfo)
+
+- Displays detailed information about a specific pokemon.
+- Includes a flipping card animation to showcase different images of the pokemon.
+
 ### Wrapper.js
 
 - A simple container component for consistent styling.

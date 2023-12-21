@@ -16,8 +16,10 @@
 @import './base.css';
 @import './components/wrapper';
 @import './components/logo';
+@import './components/button';
 @import './components/header';
 @import './components/poke-list';
 @import './components/poke-card';
 @import './components/modal';
 @import './components/poke-detail';
+@import './components/poke-info';

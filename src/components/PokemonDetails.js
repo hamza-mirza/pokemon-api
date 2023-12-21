@@ -6,14 +6,28 @@
  */
 
 import Image from 'next/image'
+import { useRouter } from 'next/router'
+import { useAppContext } from '@/context/AppContext'
 import { formatString } from '@/utils/helpers'
 
 // Component to display detailed information about a selected Pokemon.
 const PokemonDetails = ({ selectedPokemon }) => {
+  const { dispatch } = useAppContext()
+  const router = useRouter()
   const pok = selectedPokemon
   const imageUrl = pok.sprites.other['official-artwork'].front_default
   // Calculate the average score of the Pokemon's stats.
-  const averageScore = Math.floor(selectedPokemon.stats.reduce((sum, statInfo) => sum + Math.min(statInfo.base_stat, 100), 0) / selectedPokemon.stats.length)
+  const averageScore = Math.floor(pok.stats.reduce((sum, statInfo) => sum + Math.min(statInfo.base_stat, 100), 0) / pok.stats.length)
+
+  const handleClearSearch = () => {
+    dispatch({ type: 'SET_SEARCH_TERM', payload: '' })
+    dispatch({ type: 'SET_DEBOUNCED_TERM', payload: '' })
+  }
+
+  const handleOnClick = () => {
+    router.push(`/pokemon/${pok.id}`)
+    handleClearSearch()
+  }
 
   return (
     <div className="poke-detail">
@@ -22,8 +36,8 @@ const PokemonDetails = ({ selectedPokemon }) => {
           className="poke-detail-image"
           src={imageUrl}
           alt={pok.name}
-          width={100}
-          height={100}
+          width={200}
+          height={200}
         />
       </div>
       <div className="poke-detail-content">
@@ -58,6 +72,12 @@ const PokemonDetails = ({ selectedPokemon }) => {
             ))}
           </ul>
           <p>Overall skill level: {averageScore}%</p>
+          <button
+            className="button poke-detail-button"
+            onClick={handleOnClick}
+          >
+            Learn more
+          </button>
         </div>
       </div>
     </div>

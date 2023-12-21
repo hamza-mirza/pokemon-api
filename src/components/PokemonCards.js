@@ -52,7 +52,7 @@ const PokemonCards = ({ setSelectedPokemon }) => {
       {pokemon.length > displayCount && !debouncedTerm.length && (
         <div className="poke-list-cards-load-more">
           <button
-            className="poke-list-cards-load-more-btn"
+            className="button"
             onClick={loadMorePokemon}
           >
             Load More

@@ -42,3 +42,7 @@
 .poke-detail-skill-bar {
   @apply absolute left-0 top-0 bg-black h-[15px];
 }
+
+.poke-detail-button {
+  @apply mt-8;
+}
