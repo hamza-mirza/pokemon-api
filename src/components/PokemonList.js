@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import PokemonCard from './PokemonCard'
+import PokemonDetails from './PokemonDetails'
+import Wrapper from './Wrapper'
 import Modal from './Modal'
 import { useAppContext } from '@/context/AppContext'
 
@@ -52,64 +54,49 @@ const PokemonList = () => {
       console.error('Error fetching pokemon details: ', error)
     }
   }
-  console.log(selectedPokemon)
-  const filteredPokemon = pokemon.filter(poke => poke.name.toLowerCase().includes(debouncedTerm.toLowerCase()))
 
+  const filteredPokemon = pokemon.filter(poke => poke.name.toLowerCase().includes(debouncedTerm.toLowerCase()))
+  console.log(selectedPokemon)
   return (
     <div className="poke-list">
-      <div className="poke-list-search">
-        <input
-          className="poke-list-search-input"
-          placeholder="Search Pokémon"
-          value={searchTerm}
-          onChange={e => dispatch({ type: 'SET_SEARCH_TERM', payload: e.target.value })}
-        />
-        <button
-          className="poke-list-search-clear"
-          onClick={handleClearSearch}
-        >
-          &times;
-        </button>
-      </div>
-      {loading ? (
-        <div>Loading...</div>
-      ) : (
-        <>
-          <div className="poke-list-cards">
-            {filteredPokemon.map(poke => (
-              <PokemonCard
-                key={poke.name}
-                name={poke.name}
-                url={poke.url}
-                onClick={() => handlePokemonClick(poke.name)}
-              />
-            ))}
-          </div>
-          <Modal
-            isOpen={!!selectedPokemon}
-            onClose={() => setSelectedPokemon(null)}
+      <Wrapper>
+        <div className="poke-list-search">
+          <input
+            className="poke-list-search-input"
+            placeholder="Search Pokémon"
+            value={searchTerm}
+            onChange={e => dispatch({ type: 'SET_SEARCH_TERM', payload: e.target.value })}
+          />
+          <button
+            className="poke-list-search-clear"
+            onClick={handleClearSearch}
           >
-            {/* Render selected Pokemon details */}
-            {selectedPokemon && (
-              <div>
-                <h1>{selectedPokemon.name}</h1>
-                <ul>
-                  {selectedPokemon.abilities.map(abilityInfo => (
-                    <li key={abilityInfo.ability.name}>{abilityInfo.ability.name}</li>
-                  ))}
-                </ul>
-                <ul>
-                  {selectedPokemon.stats.map(statInfo => (
-                    <li key={statInfo.stat.name}>
-                      {statInfo.stat.name}: {statInfo.base_stat}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </Modal>
-        </>
-      )}
+            &times;
+          </button>
+        </div>
+        {loading ? (
+          <div>Loading...</div>
+        ) : (
+          <>
+            <div className="poke-list-cards">
+              {filteredPokemon.map(poke => (
+                <PokemonCard
+                  key={poke.name}
+                  name={poke.name}
+                  url={poke.url}
+                  onClick={() => handlePokemonClick(poke.name)}
+                />
+              ))}
+            </div>
+            <Modal
+              isOpen={!!selectedPokemon}
+              onClose={() => setSelectedPokemon(null)}
+            >
+              {selectedPokemon && <PokemonDetails selectedPokemon={selectedPokemon} />}
+            </Modal>
+          </>
+        )}
+      </Wrapper>
     </div>
   )
 }

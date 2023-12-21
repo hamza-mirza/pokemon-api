@@ -1,11 +1,28 @@
 .poke-card {
-  @apply bg-purple-1 text-center p-10 rounded-md;
+  @apply text-center rounded-md shadow-md bg-white cursor-pointer transition-all duration-300;
+}
+
+.poke-card-image-container {
+  @apply py-8;
 }
 
 .poke-card-image {
-  @apply w-56 h-56 mx-auto mb-10;
+  @apply w-32 h-32 mx-auto md:mb-4 lg:mb-10;
 }
 
 .poke-card-title {
-  @apply pt-10 block w-full border-t-2 border-purple-2 text-3xl capitalize;
+  @apply py-10 block w-full text-xl capitalize;
+}
+
+@media (min-width: 1024px) {
+  .poke-card-image-container {
+    @apply bg-slate-900/5 grayscale blur-[2px] transition-all duration-300;
+  }
+  .poke-card:hover {
+    @apply transform -translate-y-1;
+  }
+
+  .poke-card:hover .poke-card-image-container {
+    @apply grayscale-0 blur-none transition-all duration-300;
+  }
 }

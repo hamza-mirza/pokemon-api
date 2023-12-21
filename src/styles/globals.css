@@ -2,8 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
 @import './base.css';
 @import './components/wrapper';
+@import './components/logo';
+@import './components/header';
 @import './components/poke-list';
 @import './components/poke-card';
 @import './components/modal';
+@import './components/poke-detail';

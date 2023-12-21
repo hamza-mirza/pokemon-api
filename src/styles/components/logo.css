@@ -1,0 +1,11 @@
+.logo-text {
+  @apply font-semibold font-sans mb-4;
+}
+
+.logo-graphic {
+  @apply text-2xl w-10 h-10 bg-black text-white rounded-full inline-flex items-center justify-center mr-2;
+}
+
+.logo-tagline {
+  @apply text-3xl font-light;
+}

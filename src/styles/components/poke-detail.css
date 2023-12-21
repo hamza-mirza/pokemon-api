@@ -1,0 +1,44 @@
+.poke-detail {
+  @apply h-full md:flex justify-start items-start;
+}
+
+.poke-detail-image-container {
+  @apply py-20 bg-grey-0 flex justify-center items-center md:py-0 md:h-full md:px-14;
+}
+
+.poke-detail-image {
+  @apply w-32 md:w-80;
+}
+
+.poke-detail-content {
+  @apply py-10 px-10 flex justify-start items-center w-full md:h-full md:py-0;
+}
+
+.poke-detail-wrapper {
+  @apply w-full md:w-3/4;
+}
+
+.poke-detail-title {
+  @apply text-3xl mb-8;
+}
+
+.poke-detail-ability-heading,
+.poke-detail-stat-heading {
+  @apply block mb-2 text-xl font-semibold;
+}
+
+.poke-detail-ability {
+  @apply mb-8;
+}
+
+.poke-detail-skill {
+  @apply overflow-hidden relative block w-full h-[15px] mt-1 mb-4 bg-slate-400 rounded-sm;
+}
+
+.poke-detail-stat-item {
+  @apply block w-full;
+}
+
+.poke-detail-skill-bar {
+  @apply absolute left-0 top-0 bg-black h-[15px];
+}

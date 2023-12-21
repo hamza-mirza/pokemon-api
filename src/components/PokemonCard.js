@@ -9,11 +9,13 @@ const PokemonCard = ({ name, url, onClick }) => {
       className="poke-card"
       onClick={() => onClick(id)}
     >
-      <img
-        src={imageUrl}
-        alt={name}
-        className="poke-card-image"
-      />
+      <div className="poke-card-image-container">
+        <img
+          src={imageUrl}
+          alt={name}
+          className="poke-card-image"
+        />
+      </div>
       <span className="poke-card-title">{name}</span>
     </div>
   )
