@@ -1,3 +1,8 @@
+/**
+ * @file Logo.js
+ * Displays the logo of the application.
+ * Accepts props for dynamic rendering of the title and tagline of the application.
+ */
 const Logo = ({ title, tagline }) => (
   <div className="logo">
     <h1 className="logo-text">

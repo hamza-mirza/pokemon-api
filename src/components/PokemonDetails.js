@@ -1,15 +1,19 @@
-import Image from 'next/image'
+/**
+ * @file PokemonDetails.js
+ * Component for displaying detailed information about a specific pokemon.
+ * Shows stats, abilities, and other relevant details of the selected pokemon.
+ * Utilises utility functions for formatting and presenting data in a user-friendly manner.
+ */
 
+import Image from 'next/image'
 import { formatString } from '@/utils/helpers'
 
+// Component to display detailed information about a selected Pokemon.
 const PokemonDetails = ({ selectedPokemon }) => {
   const pok = selectedPokemon
   const imageUrl = pok.sprites.other['official-artwork'].front_default
-  const averageScore = Math.floor(
-    selectedPokemon.stats.reduce((sum, statInfo) => {
-      return sum + Math.min(statInfo.base_stat, 100)
-    }, 0) / selectedPokemon.stats.length
-  )
+  // Calculate the average score of the Pokemon's stats.
+  const averageScore = Math.floor(selectedPokemon.stats.reduce((sum, statInfo) => sum + Math.min(statInfo.base_stat, 100), 0) / selectedPokemon.stats.length)
 
   return (
     <div className="poke-detail">
