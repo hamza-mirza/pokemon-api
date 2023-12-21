@@ -1,40 +1,75 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# PokeQuest App Documentation
 
-## Getting Started
+## Overview
 
-First, run the development server:
+PokeQuest is a web application that allows users to explore and discover various Pokemon, view their abilities, stats, and other details. It's designed as a basic guide to Pokemon, offering a user-friendly interface to interact with the Pokemon API.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Setup and Installation
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+To set up the PokeQuest app on your local machine, follow these steps:
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+1. Install the dependencies
+   `npm install`
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+2. Run the Application
+   `npm run dev`
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Components
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### AppContext.js
 
-## Learn More
+- Manages global state for the application using React Context and Reducer.
+- Centralises state related to Pokmon data, loading states, and search functionality.
 
-To learn more about Next.js, take a look at the following resources:
+### PokemonList.js
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Main component rendering the list of Pokmon.
+- Handles fetching of Pokmon list and manages selected Pokmon state for details display.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### PokemonCards.js
 
-## Deploy on Vercel
+- Displays individual Pokmon cards with pagination functionality.
+- Handles 'Load More' functionality for displaying additional Pokmon.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### PokemonCard.js
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Represents a single Pokmon in the list.
+- Displays the Pokmon's image and name, and triggers detail view on click.
+
+### PokemonDetails.js
+
+- Shows detailed information about the selected Pokmon.
+- Renders stats, abilities, and an overall skill level of the Pokmon.
+
+### PokemonSearch.js
+
+- Provides a search input for filtering Pokmon in the list.
+- Integrated with global state for search term management.
+
+### Wrapper.js
+
+- A simple container component for consistent styling.
+
+### Logo.js
+
+- Displays the application's logo along with a title and tagline.
+
+### index.js
+
+- Serves as the landing page of the application.
+- Hosts the Logo and the main Pokmon list.
+
+### Modal.js
+
+- Reusable modal component for overlay content display.
+- Manages open/close states and animations.
+
+### fetch.js
+
+- Contains functions for fetching Pokmon data from the API.
+- Includes fetchPokemonList and fetchPokemonDetails.
+
+### helpers.js
+
+- Provides utility functions for string manipulation.
+- Includes capitaliseFirstLetter and formatString.
