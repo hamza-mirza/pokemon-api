@@ -1,4 +1,4 @@
-import { formatString } from '@/utils/utils'
+import { formatString } from '@/utils/helpers'
 
 const PokemonDetails = ({ selectedPokemon }) => {
   const pok = selectedPokemon
