@@ -15,7 +15,7 @@ const PokemonSearch = () => {
     <div className="poke-list-search">
       <input
         className="poke-list-search-input"
-        placeholder="Search Pokémon"
+        placeholder="Search Pokemon"
         value={searchTerm}
         onChange={e => dispatch({ type: 'SET_SEARCH_TERM', payload: e.target.value })}
       />
